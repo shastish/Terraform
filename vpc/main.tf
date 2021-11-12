@@ -75,4 +75,49 @@ resource "aws_route_table_association" "prod-public-routetable"{
     subnet_id = "${aws_subnet.production_public_subnet.id}"
     route_table_id = "${aws_route_table.prod_public_rt.id}"
 }
+#######################################################
+#Creating an EIP
+resource "aws_eip" "production_nat_eip" {
+  vpc = true
+  tags = {
+      Name = "production_nat_eip"
+  }
+}
+output "production_nat_eip" {
+  value = aws_eip.production_nat_eip.id
+}
+###################################################################
+#Creating NatGateway for Production VPC
+resource "aws_nat_gateway" "production_natgateway"{
+   allocation_id= "${aws_eip.production_nat_eip.id}"
+   subnet_id = "${aws_subnet.production_public_subnet.id}"
+    tags = {
+      Name = "Production Natgateway"
+          }
+}
+output "production_natgateway_id" {
+  value = aws_nat_gateway.production_natgateway.id
+}
+#######################################################################
+#Adding Route table and NatGateway
+resource "aws_route_table" "prod_private_rt" {
+    vpc_id = "${aws_vpc.vpc.id}"  
+    route {
+        //associated subnet can reach everywhere
+        cidr_block = "0.0.0.0/0"         //CRT uses this IGW to reach internet
+        gateway_id = "${aws_nat_gateway.production_natgateway.id}" 
+    }
+    tags = {
+        Name = "prod-private-rt"
+    }
+}
+output "Prodution_Private_RT_id" {
+  value = aws_route_table.prod_private_rt.id
+}
+#######################################################
+#Adding private subnet to private route table
+resource "aws_route_table_association" "prod-private-routetable"{
+    subnet_id = "${aws_subnet.prodution_private_subnet.id}"
+    route_table_id = "${aws_route_table.prod_private_rt.id}"
+}
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~END~~~~~~~~~~~~~~~~~~~~~~~~~~~#

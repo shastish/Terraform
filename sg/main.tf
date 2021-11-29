@@ -28,3 +28,4 @@ output "RDP_Sg_id" {
     value = aws_security_group.rdp_sg.id
 }
 #~~~~~~~~~~~~~~~~~~~~~~~~~END~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+

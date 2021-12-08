@@ -6,11 +6,11 @@ provider "aws" {
 }
 ##########################################################
 resource "aws_vpc" "Testing" {
-  cidr_block = "172.31.0.0/16"
+  cidr_block = "172.31.0.0/16" //Development VPC cidr
 }
 
 resource "aws_vpc" "Development" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block = "10.0.0.0/16" //Development VPC cidr
 }
 #Creating VPC Peering between Testing and Development
 resource "aws_vpc_peering_connection" "peering" {
@@ -22,7 +22,7 @@ resource "aws_vpc_peering_connection" "peering" {
   }
 }
 #Declaring VPC Perrign options
-resource "aws_vpc_peering_connection_options" "peeting" {
+resource "aws_vpc_peering_connection_options" "peering" {
   vpc_peering_connection_id = aws_vpc_peering_connection.peering.id
 
   accepter {
@@ -33,3 +33,16 @@ resource "aws_vpc_peering_connection_options" "peeting" {
     allow_vpc_to_remote_classic_link = true
   }
 }
+resource "aws_route" "a" {
+  route_table_id            = "rtb-0a24736ebb936a0e5" //change the id of the routetable
+  destination_cidr_block    = "10.0.0.0/16" //change the cidr accordingly
+  vpc_peering_connection_id = "${aws_vpc_peering_connection.peering.id}"
+}
+
+
+resource "aws_route" "b" {
+  route_table_id            = "rtb-092e98e4431a12485" //change the id of the routetable
+  destination_cidr_block    = "172.31.0.0/16" //change the cidr accordingly
+  vpc_peering_connection_id = "${aws_vpc_peering_connection.peering.id}"
+}
+

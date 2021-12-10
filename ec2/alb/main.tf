@@ -7,8 +7,8 @@ provider "aws" {
 ############################################################
 module "alb" {
   source       = "./alb"
-  vpc_id       = "vpc-0ba27102c0570d4dd"
-  subnet1      = "subnet-0c7c1bc41cf0b7e93"
-  subnet2      = "subnet-0efa44c305c444ca4"
+  #vpc_id       = "vpc-0ba27102c0570d4dd"
+  #subnet1      = "subnet-0c7c1bc41cf0b7e93"
+  #subnet2      = "subnet-0efa44c305c444ca4"
 }
   

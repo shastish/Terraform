@@ -8,6 +8,9 @@ provider "aws" {
 //Create EBS Volume
 resource "aws_ebs_volume" "ebs" {
   availability_zone = "us-west-1b"
+  count          = "6"
+  encrypted = false
+  type   = "st1"
   size = 10
   tags = {
     Name = "Windows"

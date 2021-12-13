@@ -12,7 +12,7 @@ resource "aws_lb_target_group" "apache-target-group" {
   port        = 80
   protocol    = "HTTP"
   target_type = "instance"
-  vpc_id      = "vpc-0ba27102c0570d4dd"
+  vpc_id      = "vpc-0ba27102c0570d4dd" //chnage the vpc id
 }
 
 output "Target_group_arn"{
@@ -35,12 +35,12 @@ resource "aws_lb" "apache-alb" {
   internal = false
 
   security_groups = [
-    "sg-005378d0f822d7ecc",
+    "sg-005378d0f822d7ecc", //change the SG id
   ]
 
   subnets = [
-    "subnet-0c7c1bc41cf0b7e93",
-    "subnet-0efa44c305c444ca4",
+    "subnet-0c7c1bc41cf0b7e93", //change subnet id AZ1A
+    "subnet-0efa44c305c444ca4", //change subnet id AZ1B
   ]
 
   tags = {

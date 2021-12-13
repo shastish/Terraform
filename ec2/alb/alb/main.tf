@@ -14,6 +14,11 @@ resource "aws_lb_target_group" "apache-target-group" {
   target_type = "instance"
   vpc_id      = "vpc-0ba27102c0570d4dd"
 }
+
+output "Target_group_arn"{
+  value = "aws_lb_target_group.apache-target-group.arn"
+}
+
 resource "aws_lb_target_group_attachment" "apache-alb-target-group-attachment1" {
   target_group_arn = "${aws_lb_target_group.apache-target-group.arn}"
   target_id        = "i-09f7594b997b9e28e" //change your instance ID

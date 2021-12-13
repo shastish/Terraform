@@ -61,7 +61,4 @@ resource "aws_lb_listener" "apache-alb-listner" {
     target_group_arn = "${aws_lb_target_group.apache-target-group.arn}"
   }
 }
-resource "aws_security_group" "apache-alb-sg" {
-  name   = "apache-alb-sg"
-  vpc_id = "vpc-0ba27102c0570d4dd"
-}
+

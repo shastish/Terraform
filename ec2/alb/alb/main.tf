@@ -12,7 +12,7 @@ resource "aws_lb_target_group" "apache-target-group" {
   port        = 80
   protocol    = "HTTP"
   target_type = "instance"
-  vpc_id      = "vpc-0ba27102c0570d4dd" //chnage the vpc id
+  vpc_id      = "vpc-0ba27102c0570d4dd" //change the vpc id
 }
 
 output "Target_group_arn"{

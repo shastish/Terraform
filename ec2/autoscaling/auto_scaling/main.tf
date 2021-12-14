@@ -9,7 +9,6 @@ resource "aws_autoscaling_group" "apache_asg" {
   name = "Apache_asg"
   launch_configuration = "${aws_launch_configuration.apache-config.name}"
   vpc_zone_identifier  = ["${var.subnet1}","${var.subnet2 }"]
-  target_group_arns    = ["${var.target_group_arn}"]
   health_check_type    = "ELB"
   min_size = 1
   max_size = 2

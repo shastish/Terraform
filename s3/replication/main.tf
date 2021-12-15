@@ -5,7 +5,7 @@ provider "aws" {
   secret_key = "HVULFqxhq58vN7kYUUQwlsnqS3zZUoCkYRQoClIj"
 }
 #######################################################
-
+Creating Role
 resource "aws_iam_role" "replication" {
   name = "s3-replication-rule"
 
@@ -25,7 +25,8 @@ resource "aws_iam_role" "replication" {
 }
 POLICY
 }
-
+#########################################################
+Creating Policy
 resource "aws_iam_policy" "replication" {
   name = "s3-replication-policy"
 
@@ -72,16 +73,14 @@ resource "aws_iam_role_policy_attachment" "replication" {
   policy_arn = aws_iam_policy.replication.arn
 }
 resource "aws_s3_bucket" "destination" {
-  #region = "ap-southeast-1"
-  bucket = "umesh-destination"
+  bucket = "umesh-destination" //change the bucket name
 
   versioning {
     enabled = true
   }
 }
 resource "aws_s3_bucket" "source" {
-  #region = "ap-southeast-1"
-  bucket   = "umesh-source"
+  bucket   = "umesh-source" //change the bucket name
   acl      = "private"
   versioning {
     enabled = true

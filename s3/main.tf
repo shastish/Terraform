@@ -14,7 +14,7 @@ resource "aws_s3_bucket" "bucket" {
     enabled = true
   }
   logging {
-    target_bucket = "flowlog122"
+    target_bucket = "umeshcovaibukcet"
     target_prefix = "log/"
  }
  tags = {

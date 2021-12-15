@@ -7,11 +7,15 @@ provider "aws" {
 #######################################################
 #Creating S3 Bucket
 resource "aws_s3_bucket" "bucket" {
- bucket = "bucket.uniquename.us.west.1"
+ bucket = "bucket.uniquename.us.west"
  acl ="public-read" 
  force_destroy = "true"
  versioning{
   enabled = true 
+ }
+ logging {
+    target_bucket = aws_s3_bucket.bucket.uniquename.us.west.id
+    target_prefix = "/"
  }
  tags = {
   Name = "bucket"

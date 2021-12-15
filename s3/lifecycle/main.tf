@@ -8,7 +8,6 @@ provider "aws" {
 resource "aws_s3_bucket" "bucket" {
   bucket = "amazonmumbaitestbucketumesh" //S3 bucket will be created
   acl    = "private"
-
   lifecycle_rule {
     id      = "Ansible" //new folder will created and rule will be applied
     enabled = true
@@ -27,14 +26,6 @@ resource "aws_s3_bucket" "bucket" {
     }
     expiration {
       days = 90
-    }
-  }
-  lifecycle_rule {
-    id      = "Exam" //new folder will created and rule will be applied
-    prefix  = "Exam/" 
-    enabled = true
-    expiration {
-      date = "2025-01-12"
     }
   }
 }

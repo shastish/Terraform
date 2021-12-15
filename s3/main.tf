@@ -8,7 +8,7 @@ provider "aws" {
 #Creating S3 Bucket
 resource "aws_s3_bucket" "bucket" {
  bucket = "umeshcovaibukcet"
- acl ="public-read" 
+ acl ="private" 
  force_destroy = "true"
  versioning {
     enabled = true

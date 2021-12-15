@@ -1,21 +1,21 @@
 #Declaring AWS Provider and credentials
 provider "aws" {
   region     = "us-west-1"
-  access_key = "AKIAUYEPIAMT3O737FHG"
-  secret_key = "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"
+  access_key = "AKIAUYEPIAMT74ECYOKD"
+  secret_key = "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"
 }
 #######################################################
 #Creating S3 Bucket
 resource "aws_s3_bucket" "bucket" {
- bucket = "bucket.uniquename.us.west"
+ bucket = "umeshcovaibukcet"
  acl ="public-read" 
  force_destroy = "true"
- versioning{
-  enabled = true 
- }
- logging {
-    target_bucket = aws_s3_bucket.bucket.uniquename.us.west.id
-    target_prefix = "/"
+ versioning {
+    enabled = true
+  }
+  logging {
+    target_bucket = "flowlog122"
+    target_prefix = "log/"
  }
  tags = {
   Name = "bucket"

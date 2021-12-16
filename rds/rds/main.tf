@@ -1,8 +1,7 @@
 resource "aws_security_group" "rds-sg" {
   name   = "rds-sg"
-  vpc_id = "vpc-0ba27102c0570d4dd"
+  vpc_id = var.vpcid
 }
-
 resource "aws_security_group_rule" "rds-sg-rule" {
   from_port         = 3306
   protocol          = "tcp"
@@ -40,7 +39,6 @@ resource "aws_db_instance" "sql" {
   password                = "admin123"
   apply_immediately       = "true"
   backup_retention_period = 10
-  timezone                = "Indian Standard Time"
   backup_window           = "00:00-01:00"
   db_subnet_group_name    = "${aws_db_subnet_group.rds-db-subnet.name}"
   vpc_security_group_ids  = ["${aws_security_group.rds-sg.id}"]

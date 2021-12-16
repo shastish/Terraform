@@ -19,7 +19,7 @@ resource "aws_s3_bucket_object" "object" {
   bucket = aws_s3_bucket.bucket.id
   key = "Welcome"
   provisioner "local-exec" {
-     command = "aws s3 cp F:/welcome.html s3://${aws_s3_bucket.bucket.id}"
+     command = "aws s3 cp F:/welcome.html s3://${aws_s3_bucket.bucket.id}" #To run this command aws cli should be install on the source machine
   }
   #syntax aws s3 cp sourcepath destinatiopath<s3://bucket name>
 }

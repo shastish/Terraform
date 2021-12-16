@@ -31,5 +31,5 @@ EOF
 resource "aws_sns_topic_subscription" "subscription" {
   topic_arn = aws_sns_topic.alarm.arn
   protocol  = "email"
-  endpoint  = "umeshbalaji987@gmail.com"
+  endpoint  = "umeshbalaji.qtreetechnologies@gmail.com" //change your E-mail
 }

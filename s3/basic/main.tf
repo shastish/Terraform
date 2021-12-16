@@ -1,8 +1,8 @@
 #Declaring AWS Provider and credentials
 provider "aws" {
   region     = "us-west-1"
-  access_key = "AKIAUYEPIAMT74ECYOKD"
-  secret_key = "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"
+  access_key = "AKIAVQG7BNCWRNIX5CPJ"
+  secret_key = "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"
 }
 #######################################################
 #Creating S3 Bucket

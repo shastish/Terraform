@@ -33,14 +33,14 @@ resource "aws_vpc_peering_connection_options" "peering" {
     allow_vpc_to_remote_classic_link = true
   }
 }
-resource "aws_route" "a" {
+resource "aws_route" "testing_route_table" {
   route_table_id            = "rtb-0a24736ebb936a0e5" //change the id of the routetable
   destination_cidr_block    = "10.0.0.0/16" //change the cidr accordingly
   vpc_peering_connection_id = "${aws_vpc_peering_connection.peering.id}"
 }
 
 
-resource "aws_route" "b" {
+resource "aws_route" "prodution_route_table" {
   route_table_id            = "rtb-092e98e4431a12485" //change the id of the routetable
   destination_cidr_block    = "172.31.0.0/16" //change the cidr accordingly
   vpc_peering_connection_id = "${aws_vpc_peering_connection.peering.id}"

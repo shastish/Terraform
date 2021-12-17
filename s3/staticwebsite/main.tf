@@ -9,7 +9,7 @@ provider "aws" {
 resource "aws_s3_bucket" "bucket" {
   bucket = "umeshumeshumeshumesh"
   acl    = "public-read"                        #this gives public readonly premission 
-  force_destroy = "true"                        #will delete the bucket evn if it has object in it
+  force_destroy = "true"                        #will delete the bucket even if it has object in it
   website {                                     #this block define/enable the static website 
     index_document = "index.html"
   }

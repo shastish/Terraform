@@ -20,7 +20,7 @@ resource "aws_cloudwatch_metric_alarm" "cpu-utilization" {
   alarm_actions       = ["arn:aws:sns:us-east-2:448694418091:alarms-topic"] //change with Topic arn
 
   dimensions = {
-    InstanceId = "i-084c3a673abe63e29"
+    InstanceId = "i-084c3a673abe63e29" //change the instance id
   }
 }
 #####################################################################
@@ -38,6 +38,6 @@ resource "aws_cloudwatch_metric_alarm" "instance-health-check" {
   alarm_actions       = ["arn:aws:sns:us-east-2:448694418091:alarms-topic"] //change with Topic arn
 
   dimensions = {
-    InstanceId = "i-084c3a673abe63e29"
+    InstanceId = "i-084c3a673abe63e29" //change the instance id
   }
 }

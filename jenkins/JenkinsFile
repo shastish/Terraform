@@ -1,6 +1,13 @@
 pipeline{
         agent any
-    
+    parameters {
+
+                string(name: 'git_branch_name', defaultValue: '', description: 'git branch name')
+                string(name: 'folder_name', defaultValue: '', description: 'folder name')
+                choice(name: 'build_option',
+                         choices: ['','plan','apply', 'destroy'],
+                                description: 'Apply will deploy a VPC, and Destroy will remove the VPC..')
+                }
      stages{
          stage('Git Checkout'){
           steps{
@@ -9,7 +16,7 @@ pipeline{
                     echo "Git initilization started"
                     git init 
                     echo "Git initilization completed"
-                    git pull "https://github.com/umeshbalajis/test"
+                    git pull "${git_branch_name}"
                     echo "Git pull completed"
                     """
             }
@@ -17,8 +24,8 @@ pipeline{
           stage('Terraform init '){
           steps{
                     sh """
-                        terraform -chdir="/home/jenkins/git/vpc/" init 
-                        terraform -chdir="/home/jenkins/git/vpc/" destroy --auto-approve 
+                        terraform -chdir="/home/jenkins/git/${folder_name}/" init 
+                        terraform -chdir="/home/jenkins/git/${folder_name}/" ${build_option} --auto-approve 
                         """
             }
          }

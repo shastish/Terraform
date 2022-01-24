@@ -3,6 +3,9 @@ pipeline{
     parameters {
 
                 string(name: 'git_branch_name', defaultValue: '', description: 'git branch name')
+                choice(name: 'resoure',
+                         choices: ['','iam','s3', 'vpc','ec2', 'rds'],
+                                description: 'Apply will deploy a VPC, s3, rds..')
                 string(name: 'folder_name', defaultValue: '', description: 'folder name')
                 choice(name: 'build_option',
                          choices: ['','plan','apply', 'destroy'],
@@ -25,8 +28,8 @@ pipeline{
           stage('Terraform init '){
           steps{
                     sh """
-                        terraform -chdir="/home/jenkins/git/Terraform/vpc/${folder_name}/" init 
-                        terraform -chdir="/home/jenkins/git/Terraform/vpc/${folder_name}/" ${build_option} --auto-approve 
+                        terraform -chdir="/home/jenkins/git/Terraform/${resoure}/${folder_name}/" init 
+                        terraform -chdir="/home/jenkins/git/Terraform/${resoure}/${folder_name}/" ${build_option} --auto-approve 
                         """
             }
          }

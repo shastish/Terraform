@@ -1,0 +1,26 @@
+pipeline{
+        agent any
+    
+     stages{
+         stage('Git Checkout'){
+          steps{
+                    sh """
+                    cd "/home/jenkins/git/"
+                    echo "Git initilization started"
+                    git init 
+                    echo "Git initilization completed"
+                    git pull "https://github.com/umeshbalajis/test"
+                    echo "Git pull completed"
+                    """
+            }
+         }
+          stage('Terraform init '){
+          steps{
+                    sh """
+                        terraform -chdir="/home/jenkins/git/vpc/" init 
+                        terraform -chdir="/home/jenkins/git/vpc/" apply --auto-approve 
+                        """
+            }
+         }
+     }
+}

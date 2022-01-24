@@ -18,7 +18,7 @@ pipeline{
           steps{
                     sh """
                         terraform -chdir="/home/jenkins/git/vpc/" init 
-                        terraform -chdir="/home/jenkins/git/vpc/" apply --auto-approve 
+                        terraform -chdir="/home/jenkins/git/vpc/" destroy --auto-approve 
                         """
             }
          }

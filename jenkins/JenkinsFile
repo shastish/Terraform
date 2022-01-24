@@ -17,7 +17,7 @@ pipeline{
                     echo "Git initilization started"
                     git init 
                     echo "Git initilization completed"
-                    git pull "${git_branch_name}"
+                    git clone --single-branch --branch main ${git_branch_name}
                     echo "Git pull completed"
                     """
             }

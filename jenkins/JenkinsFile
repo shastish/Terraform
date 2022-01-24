@@ -5,7 +5,7 @@ pipeline{
          stage('Git Checkout'){
           steps{
                     sh """
-                    cd "/home/ubuntu/jenkins/git/"
+                    cd "/home/jenkins/git/"
                     echo "Git initilization started"
                     git init 
                     echo "Git initilization completed"
@@ -17,8 +17,8 @@ pipeline{
           stage('Terraform init '){
           steps{
                     sh """
-                        terraform -chdir="/home/ubuntu/jenkins/git/vpc/" init 
-                        terraform -chdir="/home/ubuntu/jenkins/git/vpc/" apply --auto-approve 
+                        terraform -chdir="/home/jenkins/git/vpc/" init 
+                        terraform -chdir="/home/jenkins/git/vpc/" apply --auto-approve 
                         """
             }
          }

@@ -13,6 +13,7 @@ pipeline{
           steps{
                     sh """
                     cd "/home/jenkins/git/"
+                    rm -rf *
                     echo "Git initilization started"
                     git init 
                     echo "Git initilization completed"

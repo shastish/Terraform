@@ -9,6 +9,7 @@ pipeline{
                     echo "Git initilization started"
                     git init 
                     echo "Git initilization completed"
+                    git checkout main
                     git clone --single-branch --branch main "https://github.com/umeshbalajis/test"
                     echo "Git pull completed"
                     """

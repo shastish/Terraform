@@ -3,7 +3,6 @@ pipeline{
     parameters {
 
                 string(name: 'git_url', defaultValue: '', description: 'git url')
-		string(name: 'git_branch_name', defaultValue: '', description: 'git branch name')
                 choice(name: 'resoure',
                          choices: ['','iam','s3', 'vpc','ec2', 'rds'],
                                 description: 'Apply will deploy a VPC, s3, rds..')
@@ -21,7 +20,7 @@ pipeline{
                     echo "Git initilization started"
                     git init 
                     echo "Git initilization completed"
-                    git clone --single-branch --branch ${git_branch_name} ${git_url}
+                    git clone --single-branch --branch main ${git_url}
                     echo "Git pull completed"
                     """
             }

@@ -16,10 +16,10 @@ pipeline{
          stage('Git Checkout'){
           steps{
                     sh """
+                    git clean -xdf
+                    git remote set-url origin ${git_url}                    
                     cd "/home/jenkins/git/"
                     rm -rf *
-                    git clean -xdf
-                    git remote set-url origin ${git_url}
                     echo "Git initilization started"
                     git init 
                     echo "Git initilization completed"

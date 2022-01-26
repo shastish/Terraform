@@ -18,6 +18,7 @@ pipeline{
                     sh """
                     cd "/home/jenkins/git/"
                     rm -rf *
+                    git remote set-url origin ${git_url}
                     echo "Git initilization started"
                     git init 
                     echo "Git initilization completed"

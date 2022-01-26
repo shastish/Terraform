@@ -20,6 +20,8 @@ pipeline{
                     echo "Git initilization started"
                     git init 
                     echo "Git initilization completed"
+                    git branch -r 
+                    git checkout ${git_branch}
                     git clone --single-branch --branch ${git_branch} ${git_url}
                     echo "Git pull completed"
                     """

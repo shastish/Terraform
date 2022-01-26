@@ -3,6 +3,7 @@ pipeline{
     parameters {
 
                 string(name: 'git_url', defaultValue: '', description: 'git url')
+                string(name: 'git_branch', defaultValue: '', description: 'git_branch')
                 choice(name: 'resoure',
                          choices: ['','iam','s3', 'vpc','ec2', 'rds'],
                                 description: 'Apply will deploy a VPC, s3, rds..')
@@ -20,9 +21,10 @@ pipeline{
                     echo "Git initilization started"
                     git init 
                     echo "Git initilization completed"
-                    git branch -r 
+                    git fetch ${git_url}
+                    git branch -r
                     git checkout ${git_branch}
-                    git clone --single-branch --branch ${git_branch} ${git_url}
+                    git clone ${git_url}
                     echo "Git pull completed"
                     """
             }
@@ -30,8 +32,8 @@ pipeline{
           stage('Terraform init '){
           steps{
                     sh """
-                        terraform -chdir="/home/jenkins/git/Terraform/${resoure}/${folder_name}/" init 
-                        terraform -chdir="/home/jenkins/git/Terraform/${resoure}/${folder_name}/" ${build_option} --auto-approve 
+                        terraform -chdir="/home/jenkins/git/automation/${resoure}/${folder_name}/" init 
+                        terraform -chdir="/home/jenkins/git/automation/${resoure}/${folder_name}/" ${build_option} --auto-approve 
                         """
             }
          }

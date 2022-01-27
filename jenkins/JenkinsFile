@@ -15,14 +15,12 @@ pipeline{
      stages{
          stage('Git Checkout'){
           steps{
-                    sh """
-                    git remote remove origin                   
+                    sh """      
                     cd "/home/jenkins/git/"
                     rm -rf *
                     echo "Git initilization started"
                     git init 
                     echo "Git initilization completed"
-                    git fetch ${git_url}
                     git branch -r
                     git checkout ${git_branch}
                     git clone ${git_url}

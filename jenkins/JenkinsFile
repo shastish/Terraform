@@ -7,7 +7,7 @@ pipeline{
                 choice(name: 'resoure',
                          choices: ['','iam','s3', 'vpc','ec2', 'rds'],
                                 description: 'Apply will deploy a VPC, s3, rds..')
-                string(name: 'folder_name', defaultValue: '', description: 'folder name')
+                string(name: 'resource_name', defaultValue: '', description: 'folder name')
                 choice(name: 'build_option',
                          choices: ['','plan','apply', 'destroy'],
                                 description: 'Apply will deploy a VPC, and Destroy will remove the VPC..')

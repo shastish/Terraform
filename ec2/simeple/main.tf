@@ -1,8 +1,8 @@
 #Declaring AWS Provider and credentials
 provider "aws" {
   region     = "us-east-1"
-  access_key = "AKIAQNULLGUS4FXKNGX3"
-  secret_key = "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"
+  access_key = "AKIAQN******FXKNGX3"
+  secret_key = "m8DQiIFf***CaS5vrCJJVQRrn4uZX"
 }
 #######################################################
 #Creating the baction host

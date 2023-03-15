@@ -5,7 +5,7 @@ provider "aws" {
   secret_key = "HVULFqxhq58vN7kYUUQwlsnqS3zZUoCkYRQoClIj"
 }
 #######################################################
-Creating Role
+#Creating Role
 resource "aws_iam_role" "replication" {
   name = "s3-replication-rule"
 
@@ -26,7 +26,7 @@ resource "aws_iam_role" "replication" {
 POLICY
 }
 #########################################################
-Creating Policy
+#Creating Policy
 resource "aws_iam_policy" "replication" {
   name = "s3-replication-policy"
 
